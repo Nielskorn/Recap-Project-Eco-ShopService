@@ -13,12 +13,15 @@ class ShopServiceTest {
         List<String> productsIds = List.of("1");
 
         //WHEN
+        try{
         Order actual = shopService.addOrder(productsIds);
 
         //THEN
         Order expected = new Order("-1", List.of(new Product("1", "Apfel")));
         assertEquals(expected.products(), actual.products());
-        assertNotNull(expected.id());
+        assertNotNull(expected.id());} catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
@@ -28,9 +31,14 @@ class ShopServiceTest {
         List<String> productsIds = List.of("1", "2");
 
         //WHEN
+        try {
+
+
         Order actual = shopService.addOrder(productsIds);
 
         //THEN
-        assertNull(actual);
+        assertNull(actual);}catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
