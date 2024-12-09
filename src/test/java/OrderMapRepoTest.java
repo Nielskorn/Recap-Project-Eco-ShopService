@@ -13,7 +13,7 @@ class OrderMapRepoTest {
         OrderMapRepo repo = new OrderMapRepo();
 
         Product product = new Product("1", "Apfel");
-        Order newOrder = new Order("1", List.of(product));
+        Order newOrder = new Order("1", List.of(product),OrderStatus.PROCESSING);
         repo.addOrder(newOrder);
 
         //WHEN
@@ -41,7 +41,7 @@ class OrderMapRepoTest {
 
         //THEN
         Product product1 = new Product("1", "Apfel");
-        Order expected = new Order("1", List.of(product1));
+        Order expected = new Order("1", List.of(product1),OrderStatus.PROCESSING);
 
         assertEquals(actual, expected);
     }
