@@ -13,7 +13,7 @@ class OrderListRepoTest {
         OrderListRepo repo = new OrderListRepo();
 
         Product product = new Product("1", "Apfel");
-        Order newOrder = new Order("1", List.of(product),OrderStatus.COMPLETED);
+        Order newOrder = new Order("1", List.of(product),OrderStatus.IN_DELIVERY);
         repo.addOrder(newOrder);
 
         //WHEN

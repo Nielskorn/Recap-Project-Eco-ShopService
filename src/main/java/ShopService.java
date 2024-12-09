@@ -31,8 +31,9 @@ public class ShopService {
     public void updateOrder(String id,OrderStatus status) throws ProductDoesNotExistExeption {
        Order order = orderRepo.getOrderById(id);
        if (order!=null) {
-            orderRepo.removeOrder(id);
+           orderRepo.removeOrder(id);
            order= order.withOrderStatus(status);
+
             orderRepo.addOrder(order);
        }
 
