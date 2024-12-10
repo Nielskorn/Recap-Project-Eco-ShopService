@@ -1,12 +1,26 @@
+import lombok.AllArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
-
+@RequiredArgsConstructor
+//@AllArgsConstructor
 public class ShopService {
-    private ProductRepo productRepo = new ProductRepo();
-    private OrderRepo orderRepo = new OrderMapRepo();
+
+ private ProductRepo productRepo = new ProductRepo();
+ private OrderRepo orderRepo = new OrderMapRepo();
+
+    public ShopService(OrderListRepo orderRepo, ProductRepo productRepo) {
+    this.productRepo=productRepo;
+    this.orderRepo=orderRepo;
+
+    }
+
 
     public Order addOrder(List<String> productIds)throws ProductDoesNotExistExeption {
         List<Product> products = new ArrayList<>();
@@ -31,8 +45,9 @@ public class ShopService {
     public void updateOrder(String id,OrderStatus status) throws ProductDoesNotExistExeption {
        Order order = orderRepo.getOrderById(id);
        if (order!=null) {
-           orderRepo.removeOrder(id);
+
            order= order.withOrderStatus(status);
+           orderRepo.removeOrder(id);
 
             orderRepo.addOrder(order);
        }

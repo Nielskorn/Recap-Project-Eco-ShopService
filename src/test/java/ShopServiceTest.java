@@ -42,4 +42,12 @@ class ShopServiceTest {
             assertTrue(true);
         }
     }
+//     @Test
+//    void getOrderStatus(){
+//        ShopService shopService = new ShopService();
+//        List<String> productsIds = List.of("1");
+//        try{
+//            Order actual= shopService.getOrdersOfStatus()
+//        }catch (Exception e) {}
+//     }
 }
